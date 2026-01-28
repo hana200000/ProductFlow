@@ -5,6 +5,10 @@ function saveToLocalStorage(){
     localStorage.setItem("products", JSON.stringify(products));
 }
 
+const welcomeName = document.getElementById("welcomeName");
+const logoutBTN = document.getElementById("logoutBTN");
+const user = JSON.parse(localStorage.getItem("LoggedInUser"));
+welcomeName.textContent = "Welcome Back ," + user.name;
 
 function addProduct(){
     let productImage= document.getElementById("productImage").files[0];
@@ -114,5 +118,10 @@ function finishUpdate(){
     document.getElementById("updateBTN").style.display="none";
     document.getElementById("addBTN").style.display="inline";
 }
+
+logoutBTN.addEventListener("click", function(){
+    localStorage.removeItem("loggedInuser");
+    window.location.href="signIn.html"
+})
 
 showProduct();
